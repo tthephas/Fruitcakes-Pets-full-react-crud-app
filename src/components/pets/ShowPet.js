@@ -8,6 +8,8 @@ import { getOnePet } from "../../api/pets";
 
 import messages from "../shared/AutoDismissAlert/messages";
 
+import LoadingScreen from "../shared/LoadingScreen";
+
 // we need to get the pet's id from the route parameter then make a request to the api when we retrieve a pet from the api and then we'll render the data on the screen
 
 const ShowPet = (props) => {
