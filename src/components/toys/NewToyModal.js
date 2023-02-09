@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import ToyForm from '../shared/ToyForm'
 import { createToy } from '../../api/toys'
+import messages from '../shared/AutoDismissAlert/messages'
 
 const NewToyModal = (props) => {
     const { user, pet, show, handleClose, msgAlert, triggerRefresh } = props
@@ -40,7 +41,7 @@ const NewToyModal = (props) => {
             .then(() => {
                 msgAlert({
                     heading: 'Oh yea!',
-                    message: 'Great!',
+                    message: messages.createToySuccess,
                     variant: 'success'
                 })
             })
@@ -48,7 +49,7 @@ const NewToyModal = (props) => {
             .catch(() => {
                 msgAlert({
                     heading: 'oh no!',
-                    message: "Something went wrong",
+                    message: messages.createToyFailure,
                     variant: 'danger'
                 })
 
