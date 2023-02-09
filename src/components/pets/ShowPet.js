@@ -6,6 +6,7 @@ import messages from "../shared/AutoDismissAlert/messages";
 //import LoadingScreen from "../shared/LoadingScreen";
 import EditPetModal from "./EditPetModal";
 import ShowToy from "../toys/ShowToy";
+import NewToyModal from "../toys/NewToyModal";
 
 const toyCardContainerLayout = {
     display: 'flex',
@@ -17,6 +18,7 @@ const toyCardContainerLayout = {
 const ShowPet = (props) => {
     const [pet, setPet] = useState(null)
     const [editModalShow, setEditModalShow] = useState(false)
+    const [toyModalShow, setToyModalShow] = useState(false)
     const [updated, setUpdated] = useState(false)
 
     const { id } = useParams()
@@ -99,6 +101,12 @@ const ShowPet = (props) => {
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
+                        <Button 
+                            className="m-2" 
+                            variant='info'
+                            onClick={() => setToyModalShow(true)}>
+                            Give {pet.name} a toy!
+                        </Button>
                         {
                             pet.owner && user && pet.owner._id === user._id
                             ?
@@ -133,6 +141,14 @@ const ShowPet = (props) => {
                 msgAlert={msgAlert}
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 pet={pet}
+            />
+            <NewToyModal 
+                user={user}
+                pet={pet}
+                show={toyModalShow}
+                handleClose={() => setToyModalShow(false)}
+                msgAlert={msgAlert}
+                triggerRefresh={() => setUpdated(prev => !prev)}
             />
         </>
     )
