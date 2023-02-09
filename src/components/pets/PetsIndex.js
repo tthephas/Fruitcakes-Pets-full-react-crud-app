@@ -21,6 +21,8 @@ const cardContainerStyle = {
 const PetsIndex = (props) => {
     const [pets, setPets] = useState(null)
     const [error, setError] = useState(false)
+    // see the full index
+    console.log('these are the pets in index ', pets)
     //pull msg alert
     const { msgAlert } = props
 
@@ -59,6 +61,11 @@ const PetsIndex = (props) => {
                 <Card.Text>
                     <Link to={`/pets/${pet.id}`} className="btn btn-info">View { pet.name }</Link>
                 </Card.Text>
+                { pet.owner ?
+                <Card.Footer>
+                    Owner: {pet.owner.email}
+                </Card.Footer>
+                 : null}
             </Card.Body>
         </Card>
     ))
