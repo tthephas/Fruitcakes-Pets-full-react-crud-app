@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
-import { Spinner } from "react-bootstrap";
+//import { Spinner } from "react-bootstrap";
 import LoadingScreen from "../shared/LoadingScreen";
 
 // api func from api file
 import { getAllPets } from "../../api/pets";
 
 // need our messages from our autodissmissalert directory
-import messages from "../shared/AutoDismissAlert/messages";
+//import messages from "../shared/AutoDismissAlert/messages";
 
 const cardContainerStyle = {
     display: 'flex',
@@ -55,14 +55,14 @@ const PetsIndex = (props) => {
 
     //once we have array, loop over, produce 1 card for each pet
     const petCards = pets.map(pet => (
-        <Card key={ pet.id } style={{ width: '30%', margin: 5 }}>
-            <Card.Header>{ pet.fullTitle }</Card.Header>
+        <Card key={ pet.id } style={{ width: '30%', margin: 5, border: '1pt solid black'}}>
+            <Card.Header style={{fontWeight:'bolder'}}>{ pet.fullTitle }</Card.Header>
             <Card.Body>
                 <Card.Text>
                     <Link to={`/pets/${pet.id}`} className="btn btn-info">View { pet.name }</Link>
                 </Card.Text>
                 { pet.owner ?
-                <Card.Footer>
+                <Card.Footer style={{fontWeight:'bolder'}}>
                     Owner: {pet.owner.email}
                 </Card.Footer>
                  : null}

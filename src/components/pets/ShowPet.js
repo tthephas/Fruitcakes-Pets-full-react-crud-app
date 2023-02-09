@@ -3,9 +3,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Container, Card, Button } from 'react-bootstrap'
 import { getOnePet, removePet, updatePet } from "../../api/pets";
 import messages from "../shared/AutoDismissAlert/messages";
-import LoadingScreen from "../shared/LoadingScreen";
+//import LoadingScreen from "../shared/LoadingScreen";
 import EditPetModal from "./EditPetModal";
+import ShowToy from "../toys/ShowToy";
 
+const toyCardContainerLayout = {
+    display: 'flex',
+    justifyContent: 'center',
+    flexFlow: 'row wrap'
+}
 // we need to get the pet's id from the route parameter then make a request to the api when we retrieve a pet from the api and then we'll render the data on the screen
 
 const ShowPet = (props) => {
@@ -53,6 +59,18 @@ const ShowPet = (props) => {
             })
     }
 
+    let toyCards
+    if(pet) {
+        if (pet.toys.length > 0) {
+            toyCards = pet.toys.map(toy => (
+                <ShowToy 
+                    key={toy.id}
+                    toy={toy}
+                />
+            ))
+        }
+    }
+
     if(!pet) {
         return <p>loading.....</p>
     }
@@ -60,7 +78,7 @@ const ShowPet = (props) => {
         <>
             <Container >
                 <Card className="mt-3" style={{width:'350px'}}>
-                    <Card.Header>{ pet.fullTitle }</Card.Header>
+                    <Card.Header style={{fontWeight:'bolder'}}>{ pet.fullTitle }</Card.Header>
                     <Card.Body>
                         <Card.Text>
                             <div>
@@ -103,6 +121,9 @@ const ShowPet = (props) => {
                         }
                     </Card.Footer>
                 </Card>
+            </Container>
+            <Container className="m-2" style={toyCardContainerLayout}>
+                {toyCards}
             </Container>
             <EditPetModal
                 user={user}

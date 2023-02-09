@@ -11,7 +11,7 @@ import Home from './components/Home'
 import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
-import ChangePassword from './components/auth/ChangePassword'
+//import ChangePassword from './components/auth/ChangePassword'
 import ShowPet from './components/pets/ShowPet'
 import CreatePet from './components/pets/CreatePet'
 
