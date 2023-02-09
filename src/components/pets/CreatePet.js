@@ -13,9 +13,6 @@ import { useNavigate } from "react-router-dom"
 // on fail :component shoudl send the fail message and remain visible
 
 
-
-
-
 const CreatePet = (props) => {
     // pull out our props
     const { user, msgAlert } = props
