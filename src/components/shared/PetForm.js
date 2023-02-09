@@ -1,3 +1,5 @@
+
+
 // will take props. used to create AND update
 // action dependent on the parent component
 // form will look the same on both, create and update
@@ -16,8 +18,8 @@ const PetForm = (props) => {
                     <Form.Label>Name:</Form.Label>
                     <Form.Control
                         placeholder="What is your pet's name?"
-                        name='name'
-                        id='name'
+                        name="name"
+                        id="name"
                         value={ pet.name }
                         onChange={handleChange}
                     />
